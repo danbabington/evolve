@@ -1,0 +1,23 @@
+[tool.commitizen]
+name = "cz_customize"
+
+[tool.commitizen.customize]
+message_template = "{{change_type}}: {{message}}"
+
+[[tool.commitizen.customize.questions]]
+type = "list"
+name = "change_type"
+choices = [
+    { value = "feature", name = "feat: A new feature." },
+    { value = "bug fix", name = "bug fix: A bug fix." },
+    { value = "env", name = "env: A change to the environment." },
+    { value = "refactor", name = "refactor: A code change that neither fixes a bug nor adds a feature." },
+    { value = "docs", name = "docs: Documentation only changes." },
+    { value = "test", name = "test: Test only changes." },
+]
+message = "Select the type of change you are committing"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "message"
+message = "Commit message:"

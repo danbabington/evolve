@@ -13,7 +13,7 @@ build:
 
 commit:
 	@git add .
-	@cz commit
+	@cz --config cz.toml commit
 
 push:
 	@(git pull || true) && git push
