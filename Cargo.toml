@@ -1,0 +1,6 @@
+[package]
+name = "evolve" # the name of the package
+version = "0.1.0"    # the current version, obeying semver
+authors = ["Dan Babington <dan.babington@rising-tide.ai>"]
+description = "An implementation in Rust of davidrandallmiller's Evolution application showcased here: https://www.youtube.com/watch?v=N3tRFayqVtk"
+license = "MIT OR Apache-2.0"
