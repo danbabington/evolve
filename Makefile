@@ -11,6 +11,9 @@ format:
 build:
 	cargo build
 
+run:
+	@cargo run
+
 commit:
 	@git add .
 	@cz --config cz.toml commit
