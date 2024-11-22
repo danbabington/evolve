@@ -9,7 +9,7 @@ use crate::world_iteration::WorldIteration;
 const WORLD_WIDTH: u32 = 50;
 const WORLD_HEIGHT: u32 = 50;
 const GENE_LENGTH: usize = 8;
-const CREATURE_POPULATION: usize = 10;
+const CREATURE_POPULATION: usize = 100;
 const IMAGE_SCALE: u32 = 10;
 
 fn main() {
