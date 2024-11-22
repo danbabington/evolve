@@ -6,10 +6,11 @@ use crate::creature::Creature;
 use crate::types::Position;
 use crate::world_iteration::WorldIteration;
 
-const WORLD_WIDTH: u32 = 10;
-const WORLD_HEIGHT: u32 = 10;
+const WORLD_WIDTH: u32 = 50;
+const WORLD_HEIGHT: u32 = 50;
 const GENE_LENGTH: usize = 8;
 const CREATURE_POPULATION: usize = 10;
+const IMAGE_SCALE: u32 = 10;
 
 fn main() {
     let mut world_iteration = WorldIteration::new();

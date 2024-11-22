@@ -7,6 +7,7 @@ use crate::creature::Creature;
 use crate::types::Position;
 use crate::CREATURE_POPULATION;
 use crate::GENE_LENGTH;
+use crate::IMAGE_SCALE;
 use crate::WORLD_HEIGHT;
 use crate::WORLD_WIDTH;
 
@@ -56,12 +57,33 @@ impl WorldIteration {
     }
 
     pub fn save_state_as_image(&self, filename: &str) {
-        let mut img = ImageBuffer::new(WORLD_WIDTH, WORLD_HEIGHT);
-        for y in 0..WORLD_HEIGHT {
-            for x in 0..WORLD_WIDTH {
-                let position = Position { x, y };
-                let cell_index = position_to_index(&position);
-                img.put_pixel(x, y, self.cell_colour[cell_index]);
+        let mut img = ImageBuffer::new(
+            (WORLD_WIDTH + 2) * IMAGE_SCALE,
+            (WORLD_HEIGHT + 2) * IMAGE_SCALE,
+        );
+        for y in 0..(WORLD_HEIGHT + 2) * IMAGE_SCALE {
+            for x in 0..(WORLD_WIDTH + 2) * IMAGE_SCALE {
+                // Draw border
+                if y < IMAGE_SCALE
+                    || y >= (WORLD_HEIGHT + 1) * IMAGE_SCALE
+                    || x < IMAGE_SCALE
+                    || x >= (WORLD_WIDTH + 1) * IMAGE_SCALE
+                {
+                    img.put_pixel(x, y, Rgb([0_u8, 0_u8, 0_u8]));
+                    continue;
+                }
+
+                // Draw world
+                let world_x = x / IMAGE_SCALE - 1;
+                let world_y = y / IMAGE_SCALE - 1;
+                img.put_pixel(
+                    x,
+                    y,
+                    self.cell_colour[position_to_index(&Position {
+                        x: world_x,
+                        y: world_y,
+                    })],
+                );
             }
         }
         img.save(filename).unwrap();
