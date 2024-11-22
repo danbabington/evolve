@@ -5,17 +5,25 @@ use image::Rgb;
 pub struct Creature {
     genes: [u32; GENE_LENGTH],
     position: Position,
+    pub colour: Rgb<u8>,
+}
+
+fn calculate_colour(genes: [u32; GENE_LENGTH]) -> Rgb<u8> {
+    let mod_24_bit = 1 << 24;
+    let calculated = genes.iter().fold(0, |acc, &gene| (acc + gene) % mod_24_bit);
+    let r = (calculated >> 16) as u8;
+    let g = (calculated >> 8) as u8;
+    let b = calculated as u8;
+    Rgb([r, g, b])
 }
 
 impl Creature {
     pub fn new(genes: [u32; GENE_LENGTH], position: Position) -> Creature {
-        Creature { genes, position }
-    }
-
-    pub fn get_colour(&self) -> Rgb<u8> {
-        let red = self.genes[0] as u8;
-        let green = self.genes[1] as u8;
-        let blue = self.genes[2] as u8;
-        Rgb([red, green, blue])
+        let colour = calculate_colour(genes);
+        Creature {
+            genes,
+            position,
+            colour,
+        }
     }
 }
