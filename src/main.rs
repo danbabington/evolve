@@ -1,15 +1,18 @@
 mod creature;
-mod data_types;
-mod world;
+mod types;
+mod world_iteration;
 
 use crate::creature::Creature;
-use crate::data_types::Position;
-use crate::world::World;
+use crate::types::Position;
+use crate::world_iteration::WorldIteration;
+
+const WORLD_WIDTH: u32 = 10;
+const WORLD_HEIGHT: u32 = 10;
+const GENE_LENGTH: usize = 8;
+const CREATURE_POPULATION: usize = 10;
 
 fn main() {
-    let mut world = World::new(10, 10);
-    let creature_1 = Creature::new(Position { x: 0, y: 0 });
-    world.populate();
-    // world.cells[0] = Some(creature_1);
-    println!("Hello, world!");
+    let mut world_iteration = WorldIteration::new();
+    world_iteration.populate([[0; GENE_LENGTH]; CREATURE_POPULATION]);
+    world_iteration.save_state_as_image("test.png");
 }
