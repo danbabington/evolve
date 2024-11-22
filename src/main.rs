@@ -13,6 +13,10 @@ const CREATURE_POPULATION: usize = 10;
 
 fn main() {
     let mut world_iteration = WorldIteration::new();
-    world_iteration.populate([[0; GENE_LENGTH]; CREATURE_POPULATION]);
+    world_iteration.populate(random_initial_genes());
     world_iteration.save_state_as_image("test.png");
+}
+
+fn random_initial_genes() -> [[u32; GENE_LENGTH]; CREATURE_POPULATION] {
+    std::array::from_fn(|_| std::array::from_fn(|_| rand::random::<u32>()))
 }

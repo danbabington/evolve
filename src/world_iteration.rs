@@ -38,7 +38,7 @@ impl WorldIteration {
             let cell_index = position_to_index(&position);
             self.occupied_cells[cell_index] = true;
             let new_creature = Creature::new(genes[i], position);
-            self.cell_colour[cell_index] = new_creature.colour;
+            self.cell_colour[cell_index] = new_creature.get_colour();
             self.creatures[i] = Some(new_creature);
         }
     }
