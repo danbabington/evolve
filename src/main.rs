@@ -1,10 +1,10 @@
 mod creature;
 mod types;
-mod world_iteration;
+mod world;
 
 use crate::creature::Creature;
 use crate::types::Position;
-use crate::world_iteration::WorldIteration;
+use crate::world::World;
 
 const WORLD_WIDTH: u32 = 50;
 const WORLD_HEIGHT: u32 = 50;
@@ -13,7 +13,7 @@ const CREATURE_POPULATION: usize = 100;
 const IMAGE_SCALE: u32 = 10;
 
 fn main() {
-    let mut world_iteration = WorldIteration::new();
+    let mut world_iteration = World::new();
     world_iteration.populate(random_initial_genes());
     world_iteration.save_state_as_image("test.png");
 }

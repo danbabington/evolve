@@ -15,7 +15,7 @@ const WORLD_SIZE: usize = (WORLD_HEIGHT * WORLD_WIDTH) as usize;
 const BACKGROUND_COLOUR: Rgb<u8> = Rgb([255, 255, 255]);
 
 #[derive(Debug, Copy, Clone)]
-pub struct WorldIteration {
+pub struct World {
     occupied_cells: [bool; WORLD_SIZE],
     cell_colour: [Rgb<u8>; WORLD_SIZE],
     creatures: [Option<Creature>; CREATURE_POPULATION],
@@ -25,9 +25,9 @@ fn position_to_index(position: &Position) -> usize {
     (position.y * WORLD_WIDTH + position.x) as usize
 }
 
-impl WorldIteration {
-    pub fn new() -> WorldIteration {
-        WorldIteration {
+impl World {
+    pub fn new() -> World {
+        World {
             occupied_cells: [false; WORLD_SIZE],
             cell_colour: [BACKGROUND_COLOUR; WORLD_SIZE],
             creatures: std::array::from_fn(|_| None),
