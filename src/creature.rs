@@ -2,6 +2,7 @@ use crate::types::Position;
 use crate::GENE_LENGTH;
 use image::Rgb;
 
+#[derive(Debug, Copy, Clone)]
 pub struct Creature {
     genes: [u32; GENE_LENGTH],
     position: Position,

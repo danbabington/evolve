@@ -14,6 +14,7 @@ use crate::WORLD_WIDTH;
 const WORLD_SIZE: usize = (WORLD_HEIGHT * WORLD_WIDTH) as usize;
 const BACKGROUND_COLOUR: Rgb<u8> = Rgb([255, 255, 255]);
 
+#[derive(Debug, Copy, Clone)]
 pub struct WorldIteration {
     occupied_cells: [bool; WORLD_SIZE],
     cell_colour: [Rgb<u8>; WORLD_SIZE],
